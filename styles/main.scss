@@ -1,0 +1,24 @@
+@import "~bootstrap/scss/bootstrap";
+
+$dark: #1f232a;
+html,
+body {
+  height: 100%;
+}
+
+.cc {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.cc-content {
+  margin-top: 30px;
+  flex: 1;
+}
+
+.cc-footer {
+  padding: 3rem;
+  background-color: $dark;
+  color: $white
+}
