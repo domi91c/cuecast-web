@@ -1,11 +1,17 @@
-import { User } from '../interfaces'
+import { User, Task } from '../interfaces'
 
 /** Dummy user data. */
+export const tasks: Task[] = [
+  {title: 'Blah blah blah', description: 'Alice'},
+  {title: 'Blah blah blah', description: 'Bob'},
+  {title: 'Blah blah blah', description: 'Caroline'},
+  {title: 'Blah blah blah', description: 'Dave'},
+]
 export const dataArray: User[] = [
-  { id: 101, name: 'Alice' },
-  { id: 102, name: 'Bob' },
-  { id: 103, name: 'Caroline' },
-  { id: 104, name: 'Dave' },
+  {id: 101, name: 'Alice'},
+  {id: 102, name: 'Bob'},
+  {id: 103, name: 'Caroline'},
+  {id: 104, name: 'Dave'},
 ]
 
 /**

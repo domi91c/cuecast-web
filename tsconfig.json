@@ -14,13 +14,22 @@
     "moduleResolution": "node",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@components/*": ["./components/*"],
+      "@interfaces": ["./interfaces/*"],
+      "@types": ["./_store/types"],
+      "@actions": ["./_actions/*"],
+      "@reducers": ["./_reducers/*"]
+    }
   },
   "exclude": [
     "node_modules"
