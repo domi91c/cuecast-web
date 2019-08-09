@@ -23,12 +23,13 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
       "@components/*": ["./components/*"],
-      "@interfaces": ["./interfaces/*"],
-      "@types": ["./_store/types"],
-      "@actions": ["./_actions/*"],
-      "@reducers": ["./_reducers/*"]
+      "@types": ["./types/index"],
+      "@styles/*": ["./styles/*"],
+      "@utils/*": ["./utils/*"],
+      "@constants": ["./_store/constants"],
+      "@actions/*": ["./_actions/*"],
+      "@reducers/*": ["./_reducers/*"]
     }
   },
   "exclude": [

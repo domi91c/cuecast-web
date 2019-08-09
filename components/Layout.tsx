@@ -4,7 +4,7 @@ import Header from './Header'
 import Footer from "./Footer";
 import {Container} from "react-bootstrap";
 
-import "../styles/main.scss"
+import "@styles/main.scss"
 
 type Props = {
     title?: string

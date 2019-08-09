@@ -1,4 +1,4 @@
-import { AUTHENTICATE, DEAUTHENTICATE, USER } from '@types';
+import { AUTHENTICATE, DEAUTHENTICATE, USER } from '@constants';
 
 const initialState = {
   token: null,

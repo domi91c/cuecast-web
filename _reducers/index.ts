@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({
-});
+import todosReducer from "@reducers/todosReducer";
+
+export default combineReducers({todosReducer});
 
