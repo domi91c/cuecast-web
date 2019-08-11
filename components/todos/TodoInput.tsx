@@ -1,17 +1,38 @@
-import { Task } from "@types";
+import TodoStore from "@stores/TodoStore";
+import { inject } from "mobx-react";
 import * as React from "react";
 import { Form } from "react-bootstrap";
 
-interface ITodoInputProps {
+interface IProps {
+  todos?: TodoStore
 }
 
-const TodoInput: React.FC<ITodoInputProps> = ({}) => {
+@inject('todos')
+class TodoInput extends React.Component<IProps> {
 
-  return (
-    <Form.Group>
-      <Form.Control placeholder="I need to..." />
-    </Form.Group>
-  )
+  constructor (props) {
+    super(props);
+    this.props.todos.todoInput = React.createRef<HTMLInputElement>()
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    this.props.todos.addTodo()
+    e.target.reset()
+  };
+
+  render () {
+
+
+    return (
+      <form onSubmit={(e) => this.handleSubmit(e)}>
+        <Form.Group>
+          <Form.Control ref={this.props.todos.todoInput} placeholder="I need to..." />
+        </Form.Group>
+      </form>
+    )
+  }
+
 }
 
 export default TodoInput

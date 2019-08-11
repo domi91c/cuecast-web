@@ -22,3 +22,7 @@ body {
   background-color: $dark;
   color: $white
 }
+
+.completed-task {
+  text-decoration: line-through;
+}

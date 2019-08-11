@@ -16,9 +16,11 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
+    "noImplicitAny": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictNullChecks": false,
     "target": "esnext",
     "experimentalDecorators": true,
     "baseUrl": ".",
@@ -27,9 +29,8 @@
       "@types": ["./types/index"],
       "@styles/*": ["./styles/*"],
       "@utils/*": ["./utils/*"],
-      "@constants": ["./_store/constants"],
-      "@actions/*": ["./_actions/*"],
-      "@reducers/*": ["./_reducers/*"]
+      "@store": ["./stores/index"],
+      "@stores/*": ["./stores/*"]
     }
   },
   "exclude": [

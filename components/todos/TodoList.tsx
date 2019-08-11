@@ -1,33 +1,42 @@
-import * as React from "react";
 import Todo from "@components/todos/Todo";
 import TodoInput from "@components/todos/TodoInput";
-import { Task } from "@types";
+import TodoStore from "@stores/TodoStore";
+import { inject, observer } from "mobx-react";
+import * as React from "react";
 import { Card, ListGroup } from "react-bootstrap";
 
+
 interface ITodoListProps {
-  tasks: Task[]
+  todos?: TodoStore
 }
 
-const TodoList: React.FC<ITodoListProps> = ({tasks}) => {
+@inject('todos') @observer
+class TodoList extends React.Component<ITodoListProps> {
 
-  const listItems = tasks.map((task: Task) =>
-    <Todo task={task} key={task.index} />
+  render () {
+    return (
+      <Card style={{ width: '18rem' }}>
+        <Card.Body>
+          <Card.Title>Todo List</Card.Title>
+          <ListGroup as="ul">
+            {this.listTodos()}
+          </ListGroup>
+          <hr />
+        </Card.Body>
+        <Card.Footer>
+          <TodoInput />
+        </Card.Footer>
+      </Card>
+    )
+  }
+
+  private listTodos = () => (
+    this.props.todos.tasks.map(
+      task => <Todo task={task} />
+    )
   );
 
-  return (
-    <Card style={{width: '18rem'}}>
-      <Card.Body>
-        <Card.Title>Todo List</Card.Title>
-        <ListGroup as="ul">
-          {listItems}
-        </ListGroup>
-        <hr />
-      </Card.Body>
-      <Card.Footer>
-        <TodoInput />
-      </Card.Footer>
-    </Card>
-  )
 }
 
 export default TodoList
+

@@ -1,13 +1,16 @@
-import { tasks } from "@utils/sample-api";
+import { loadTasks } from "@utils/sample-api";
 import * as React from 'react'
 import Layout from '@components/Layout'
 import { NextPage } from 'next'
-import TodoList from "@components/todos/TodoList";
+
 
 const HomePage: NextPage = () => {
+
+  function testStore() {
+  }
+
   return (
     <Layout title="Todo List Example">
-      <TodoList tasks={tasks} />
     </Layout>
   )
   const mapDispatchToProps = {}

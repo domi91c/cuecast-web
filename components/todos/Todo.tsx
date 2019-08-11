@@ -1,20 +1,46 @@
-import { newTodo, removeTodo } from "@actions/todosActions";
-import { store } from "next/dist/build/output/store";
-import * as React from "react";
+import TodoStore from "@stores/TodoStore";
 import { Task } from "@types";
-import { Button, ListGroup } from "react-bootstrap";
+import { inject, observer } from "mobx-react";
+import * as React from "react";
+import { ListGroup } from "react-bootstrap";
 
 
 interface ITaskProps {
   task: Task
+  todos?: TodoStore
 }
 
-const Todo: React.FC<ITaskProps> = ({task}) => (
-  <ListGroup.Item as="li" className="d-flex">
-    <div className=""> {task.title} </div>
-    <div className="ml-auto"><Button onClick={() => removeTodo(task.index)}>X</Button></div>
-  </ListGroup.Item>
-)
+@inject('todos') @observer
+class Todo extends React.Component<ITaskProps> {
+  constructor (props) {
+    super(props)
+  }
+
+  render () {
+    let { task } = this.props
+
+    let handleRemove = e => {
+      e.stopPropagation();
+      this.props.todos.removeTodo(task)
+    };
+
+    return (
+      <ListGroup.Item as="li"
+                      className="d-flex"
+                      key={task.id}
+                      onClick={() => this.props.todos.toggleCompletion(task)}>
+        <p className={task.completed ? 'completed-task' : ''}>
+          {task.title}
+        </p>
+        <button className="btn btn-danger ml-auto"
+                onClick={handleRemove}>
+          X
+        </button>
+      </ListGroup.Item>
+    )
+  }
+
+}
 
 
 export default Todo;

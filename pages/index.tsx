@@ -1,28 +1,26 @@
-import * as React from 'react'
-import Link from 'next/link'
 import Layout from '@components/Layout'
-import {NextPage} from 'next'
+import TodoList from "@components/todos/TodoList";
 
-import {Button} from 'react-bootstrap';
+import TodoStore from "@stores/TodoStore";
+import { inject, observer, Provider } from 'mobx-react';
 
 
-const IndexPage: NextPage = () => {
+import * as React from "react";
+
+interface IProps {
+  todos: TodoStore
+}
+
+@inject('views') @observer
+class IndexPage extends React.Component<IProps> {
+
+  render () {
     return (
-        <Layout title="Home | Next.js + TypeScript Example">
-            <h1>Cuecast</h1>
-            <p>
-                <Button>
-                    flat button
-                </Button>
-                <div className="center-block text-center">
-                </div>
-
-                <Link href="/about">
-                    <a>About</a>
-                </Link>
-            </p>
-        </Layout>
+      <Layout title="Home | CueCast">
+        <TodoList />
+      </Layout>
     )
+  }
 }
 
 export default IndexPage
